@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="แอปพลิเคชันระบุชนิดแมลงทางการเกษตรด้วย AI เทคโนโลยีล้ำสมัย">
+    <title>AgriBug-AI - เครื่องมือตรวจแยกแมลงทางการเกษตร</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <i class="fas fa-bug"></i>
+            <span>AgriBug Ai</span>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="hero-section">
+            <h1><i class="fas fa-magnifying-glass"></i> ตรวจแยกแมลงทางการเกษตร</h1>
+            <p class="subtitle">ใช้เทคโนโลยี AI ช่วยระบุชนิดแมลงที่เป็นมิตรและศัตรูพืชอย่างแม่นยำ</p>
+        </div>
+
+        <div class="camera-upload-section">
+            <button id="webcamButton" type="button" class="btn-primary">
+                <i class="fas fa-camera"></i> เปิดกล้อง
+            </button>
+            <input type="file" id="fileUpload" accept="image/*" capture="environment" style="display: none;">
+            <button id="uploadButton" type="button" class="btn-secondary">
+                <i class="fas fa-upload"></i> อัปโหลดรูปภาพ
+            </button>
+        </div>
+
+        <div class="image-display-area">
+            <div class="image-container">
+                <video id="webcam" autoplay playsinline style="display: none;"></video>
+                <img id="uploadedImage" alt="รูปภาพที่อัปโหลด" style="display: none;">
+                <canvas id="canvas" style="display: none;"></canvas>
+                <div id="placeholderImage" class="placeholder-box">
+                    <i class="fas fa-insect fa-3x"></i>
+                    <p>กรุณาถ่ายภาพหรืออัปโหลดรูปแมลง</p>
+                </div>
+            </div>
+            
+            <div class="action-buttons" style="display: none;">
+                <button id="retakeButton" class="btn-warning">
+                    <i class="fas fa-rotate-left"></i> ถ่ายใหม่
+                </button>
+                <button id="analyzeButton" class="btn-primary">
+                    <i class="fas fa-search"></i> วิเคราะห์
+                </button>
+            </div>
+        </div>
+
+        <div id="predictionResult" class="result-box">
+            <div class="result-header">
+                <i class="fas fa-clipboard-check"></i>
+                <h3>ผลการวิเคราะห์</h3>
+            </div>
+            <div class="result-content">
+                <p id="resultText">กำลังโหลดโมเดล AI...</p>
+                <div id="confidenceBar" class="confidence-bar">
+                    <div class="confidence-level"></div>
+                </div>
+            </div>
+            <div id="additionalInfo" class="additional-info" style="display: none;">
+                <!-- เอาสัญลักษณ์ออกทั้งหมด -->
+            </div>
+        </div>
+    </div>
+
+    <div class="features-section">
+        <div class="feature-card">
+            <i class="fas fa-bolt"></i>
+            <h3>รวดเร็ว</h3>
+            <p>วิเคราะห์ผลลัพธ์ในเวลาไม่กี่วินาที</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-brain"></i>
+            <h3>แม่นยำ</h3>
+            <p>ใช้เทคโนโลยี AI ที่มีความแม่นยำสูง</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-leaf"></i>
+            <h3>เป็นมิตร</h3>
+            <p>ช่วยเกษตรกรลดการใช้สารเคมี</p>
+        </div>
+    </div>
+
+    <!-- TensorFlow.js & Teachable Machine -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    
+    <!-- Custom script -->
+    <script src="script.js" defer></script>
+    <footer class="developer-footer">
+        <div class="footer-content">
+            <p>พัฒนาโดย</p>
+            <div class="developer-info">
+                <img src="https://via.placeholder.com/50" alt="โลโก้โรงเรียน" class="school-logo">
+                <p>โรงเรียนเทศบาลเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา ฯ สยามบรมราชกุมารี<br>
+                สังกัดเทศบาลนครแม่สอด อำเภอแม่สอด จังหวัดตาก</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
